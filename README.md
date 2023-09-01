@@ -1,6 +1,11 @@
 # history_books_Store
 Welcome to the History Book Online Store repository! This project is a dynamic and responsive e-commerce website built using the React.js library, Next.js framework, and Tailwind CSS for styling. The main purpose of this web application is to provide users with a seamless shopping experience to purchase the book "History."
+
+## SignIn Page  
 ![Books Store Screenshot](svgs/signin.png)
+
+## SignUp Page  
+![Books Store Screenshot](svgs/signup.png)
 
 
 ## Table of Contents
