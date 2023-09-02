@@ -33,3 +33,6 @@ frontend/.vercel
 # typescript
 frontend/*.tsbuildinfo
 frontend/next-env.d.ts
+
+#Back-end
+backend/node_modules
