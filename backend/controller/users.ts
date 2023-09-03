@@ -15,7 +15,7 @@ export const signup = async (req:any,res:any) => {
         res.status(400).json({message:'Email not valid.'});
         return;
     }    
-    const db = new Pouchdb('http://admin:admin@127.0.0.1:5984/users');
+    const db = new Pouchdb('http://admin:tarekch22@34.224.89.206:5984/users');
     let user = await db.find({
         selector:{
             email:email
@@ -47,7 +47,7 @@ export const signin = async (req:any,res:any) => {
             res.status(401).json({message:'Unauthorized'})
             return;
         }    
-        const db = new Pouchdb('http://admin:admin@127.0.0.1:5984/users');
+        const db = new Pouchdb('http://admin:tarekch22@34.224.89.206:5984/users');
         db.find({
             selector:{
                 email:email
