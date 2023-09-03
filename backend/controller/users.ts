@@ -2,12 +2,19 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import Pouchdb from "pouchdb";
 Pouchdb.plugin(require('pouchdb-find'));
+import * as EmailValidator from 'email-validator';
+
 
 
 let secret_key :any = process.env.ACCES_TOKEN;
 
 export const signup = async (req:any,res:any) => {
     let { email, password } = req.body;
+    let validEmail = EmailValidator.validate(email); // true
+    if(!validEmail){
+        res.status(400).json({message:'Email not valid.'});
+        return;
+    }    
     const db = new Pouchdb('http://admin:admin@127.0.0.1:5984/users');
     let user = await db.find({
         selector:{
@@ -48,7 +55,7 @@ export const signin = async (req:any,res:any) => {
         })
         .then((response:any) => {
             if(response.bookmark == 'nil'){
-                res.status(404).json({message:'User not Found.'})
+                res.status(404).json({message:'User not found.'})
             }else {
                 let pass = response.docs[0].password;
                 let valid = bcrypt.compareSync(password, pass);
@@ -66,7 +73,7 @@ export const signin = async (req:any,res:any) => {
         })
     }
     catch (error:any) {
-        return res.status(500).json({ error: "sdasad"+error.message });
+        return res.status(500).json({ error: error.message });
     }
     
 
