@@ -4,10 +4,10 @@ import Pouchdb from "pouchdb";
 Pouchdb.plugin(require('pouchdb-find'));
 
 
+let secret_key :any = process.env.ACCES_TOKEN;
 
 export const signup = async (req:any,res:any) => {
     let { email, password } = req.body;
-    let linkDB = process.env.DB_USERS;
     const db = new Pouchdb('http://admin:admin@127.0.0.1:5984/users');
     let user = await db.find({
         selector:{
@@ -24,7 +24,6 @@ export const signup = async (req:any,res:any) => {
                 password:password
             }
             db.post(data);
-            let secret_key :any = process.env.ACCES_TOKEN;
             let payload:any = {
                 'email':email
             }
@@ -32,4 +31,43 @@ export const signup = async (req:any,res:any) => {
             res.status(200).json({ token: token})
         }
     })    
+}
+
+export const signin = async (req:any,res:any) => {
+    try{
+        let { email, password } = req.body;
+        if(email == '' || password == ''){
+            res.status(401).json({message:'Unauthorized'})
+            return;
+        }    
+        const db = new Pouchdb('http://admin:admin@127.0.0.1:5984/users');
+        db.find({
+            selector:{
+                email:email
+            }
+        })
+        .then((response:any) => {
+            if(response.bookmark == 'nil'){
+                res.status(404).json({message:'User not Found.'})
+            }else {
+                let pass = response.docs[0].password;
+                let valid = bcrypt.compareSync(password, pass);
+                if(!valid){
+                    res.status(401).json({ message: "Invalid email or password" });
+                    return;
+                }
+                let payload = {
+                    email: response.docs[0].email,
+                };
+                let token = jwt.sign(payload,secret_key);
+                res.status(200).json({ token: token})            
+            }
+            
+        })
+    }
+    catch (error:any) {
+        return res.status(500).json({ error: "sdasad"+error.message });
+    }
+    
+
 }
