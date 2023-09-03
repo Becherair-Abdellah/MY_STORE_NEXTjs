@@ -1,0 +1,8 @@
+- For start the serve follow the next steps:
+  1- Open the terminal in folder backend
+  2- write pnpm install or npm install
+  3- pnpm start 
+  after this steps the server is start.
+
+link for signin : http://localhost:3000/signin
+link for signup : http://localhost:3000/signup
