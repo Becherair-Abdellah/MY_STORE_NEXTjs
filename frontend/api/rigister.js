@@ -5,7 +5,6 @@ export const rigister = async(file)=>{
     formData.append("username",'abdellah_bechxeraxir');
     formData.append("password",'abdellah_becheraxxir');
     console.log(file)
-    
     formData.append("image",file);
     formData.append("name",'abdellahx04x');
     formData.append("email",'abdellah.becherxair@gmail.xcom');
