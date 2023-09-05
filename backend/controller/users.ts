@@ -11,7 +11,7 @@ let secret_key :any = process.env.ACCES_TOKEN;
 export const signup = async (req:any,res:any) => {
     let { email, password } = req.body;
     let validEmail = EmailValidator.validate(email); // true
-    if(!validEmail){
+    if(!validEmail || password == ''){
         res.status(400).json({message:'Email not valid.'});
         return;
     }    
