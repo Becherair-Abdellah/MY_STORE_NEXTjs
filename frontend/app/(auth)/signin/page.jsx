@@ -34,7 +34,7 @@ export default function SignIn() {
 <span className="text-center mt-4 text-gray-500">or</span>
 
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action="#" method="POST">
+            <form className="space-y-6"action="http://localhost:3000/" method="POST">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                   Email address
