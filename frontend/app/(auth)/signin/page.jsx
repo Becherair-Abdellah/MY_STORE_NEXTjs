@@ -1,5 +1,10 @@
-
+"use client"
+import { signin } from "@/api/signin"
+import { useState } from "react";
 export default function SignIn() {
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+  console.log(9999);
     return (
       <div className="h-full flex justify-center items-center">
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -34,18 +39,24 @@ export default function SignIn() {
 <span className="text-center mt-4 text-gray-500">or</span>
 
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6"action="http://localhost:3000/" method="POST">
+            <form className="space-y-6" method="POST" onSubmit={(e)=>{
+              e.preventDefault();
+              signin(email,password)
+            }}>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                   Email address
                 </label>
                 <div className="mt-2">
-                  <input
+                <input
                     id="email"
                     name="email"
                     type="email"
                     autoComplete="email"
                     required
+                    onChange={(e)=>{
+                      setEmail(e.target.value);
+                    }}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400"
                   />
                 </div>
@@ -63,12 +74,15 @@ export default function SignIn() {
                   </div>
                 </div>
                 <div className="mt-2">
-                  <input
+                <input
                     id="password"
                     name="password"
                     type="password"
-                    autoComplete="current-password"
+                    autoComplete="password"
                     required
+                    onChange={(e)=>{
+                      setPassword(e.target.value);
+                    }}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400"
                   />
                 </div>
