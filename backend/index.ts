@@ -15,8 +15,12 @@ server.use(bodyParser.urlencoded({ extended: false }))
 server.use(bodyParser.json())
 
 const userRoutes = require("./routes/users");
+const adminRoutes = require("./routes/admin");
+
 
 server.use("/", userRoutes);
+server.use("/", adminRoutes);
+
 
 
 
