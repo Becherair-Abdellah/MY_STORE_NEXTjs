@@ -30,6 +30,7 @@ export const authAdmin = async (req:any,res:any) => {
                 }
                 let payload = {
                     email: response.docs[0].email,
+                    isAdmin:true
                 };
                 let token = jwt.sign(payload,secret_key);
                 res.status(200).json({ token: token})            
