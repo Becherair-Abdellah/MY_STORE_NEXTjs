@@ -1,6 +1,6 @@
 import axios from "axios";
 export const signinDashboard = async (email, password) => {
-    const url = "http://localhost:5500/signin";
+    const url = "http://localhost:5550/signinadmin";
 
     const config = {
         headers: {
@@ -20,7 +20,7 @@ export const signinDashboard = async (email, password) => {
         // Assuming you have received a token from your backend
 
         // Store the token in local storage
-        localStorage.setItem('authTokenDashbaord ', token);
+        localStorage.setItem('authAdmin', token);
         // navigate to main page
         window.location.href = '/dashboard';
 

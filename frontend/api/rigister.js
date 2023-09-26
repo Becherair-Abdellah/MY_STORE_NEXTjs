@@ -1,6 +1,6 @@
 import axios from "axios";
 export const rigister = async (email, password) => {
-    const url = "http://localhost:5500/signup";
+    const url = "http://localhost:5550/signup";
 
     const config = {
         headers: {

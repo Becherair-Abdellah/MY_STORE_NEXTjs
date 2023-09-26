@@ -32,6 +32,6 @@ server.get('/',(req:any,res:any)=>{
 
 
 
-server.listen(5500, () => {
-    console.log(`Example app listening at http://localhost:5500`);
+server.listen(5550, () => {
+    console.log(`Example app listening at http://localhost:5550`);
   })
