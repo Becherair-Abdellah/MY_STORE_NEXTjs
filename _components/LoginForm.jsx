@@ -53,7 +53,7 @@ const LoginForm = () => {
       type="submit"
       className="w-full bg-yellow  py-2  rounded"
       onClick={(e)=>{
-        e.preventDefault();
+        // e.preventDefault();
         onSubmit();
       }}
     >
