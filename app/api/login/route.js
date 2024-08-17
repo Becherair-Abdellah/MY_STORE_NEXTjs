@@ -14,7 +14,6 @@ try {
   });
   return Response.json(user);
 } catch (error) {
-    console.log(error);
   return Response.json(error);
 }
 }
