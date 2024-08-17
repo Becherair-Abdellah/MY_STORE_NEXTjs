@@ -61,7 +61,7 @@ try {
         onSubmit();
       }}
     >
-      your {data?.$id}
+      your {mydata?.$id}
     </button>
   </form>
   )
