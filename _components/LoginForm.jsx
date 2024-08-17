@@ -61,7 +61,7 @@ try {
         onSubmit();
       }}
     >
-      your {mydata?.$id}
+      your {mydata?.$id}{email}{password}
     </button>
   </form>
   )
