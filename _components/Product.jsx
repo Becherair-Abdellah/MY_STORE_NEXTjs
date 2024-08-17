@@ -1,6 +1,4 @@
 'use client'
-import { FaCheck } from "react-icons/fa";
-import { useState } from "react";
 import Link from "next/link";
 import Button_added from "./Button_added";
 function Product({img,price,title}) {
