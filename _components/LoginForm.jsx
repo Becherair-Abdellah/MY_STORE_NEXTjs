@@ -4,21 +4,25 @@ import React, { useState } from 'react'
 const LoginForm = () => {
     const [email,setEmail] = useState();
     const [password,setPassword] = useState();
-    const [data,setData] = useState();
+    const [mydata,setData] = useState();
     const onSubmit = async ()=>{
-        const response = await fetch("/api/login",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({
-                "email":email,
-                "password":password,
-            })
-        });
-        const data = await response.json();
-        setData(data);
-        // console.log(data);
+try {
+    const response = await fetch("/api/login",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            "email":email,
+            "password":password,
+        })
+    });
+    const data = await response.json();
+    console.log(data);
+    setData(data);
+} catch (error) {
+    console.log(error);
+}
     }
 
   return (
@@ -53,7 +57,7 @@ const LoginForm = () => {
       type="submit"
       className="w-full bg-yellow  py-2  rounded"
       onClick={(e)=>{
-        // e.preventDefault();
+        e.preventDefault();
         onSubmit();
       }}
     >
