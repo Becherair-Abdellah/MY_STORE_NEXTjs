@@ -14,7 +14,7 @@ function page() {
             </div>
            <LoginForm/>
             <div className="mt-4 text-center">
-              <a href="#" className="text-sm text-primary-primary__c dark:text-yellow">Don't have an account? Signup</a>
+              <a href="#" className="text-sm text-primary-primary__c dark:text-yellow">Don&apos;t have an account? Signup</a>
             </div>
           </div>
         </div>

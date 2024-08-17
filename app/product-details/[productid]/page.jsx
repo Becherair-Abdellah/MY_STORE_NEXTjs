@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react';
-function page() {
+function Page() {
   const [check_add,set_check_add] = useState(false);
 
   return (
@@ -89,4 +89,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
