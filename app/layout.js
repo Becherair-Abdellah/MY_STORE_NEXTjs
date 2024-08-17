@@ -1,6 +1,6 @@
 
 import "./globals.css";
-import Header from "./_components/Header";
+import Header from "../_components/Header";
 
  // bricolage
  import { Bricolage_Grotesque } from "next/font/google";
@@ -8,7 +8,9 @@ import Header from "./_components/Header";
   weight: ['400', '700'], 
  });
 
-
+// state managment
+import { Our_provider } from "@/redux/Our_provider";
+import Footer from "../_components/Footer";
 
 export const metadata = {
   title: "Create Next App",
@@ -18,10 +20,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     // set this className='dark' to enable dark mode 
+   
+
     <html lang="en" className='dark'>
       <body className={bricolage_grotesque.className} >
+      <Our_provider  >
         <Header/>
-        {children}</body>
+       {children} 
+       <Footer/>
+       </Our_provider>  </body>
     </html>
+    
   );
 }

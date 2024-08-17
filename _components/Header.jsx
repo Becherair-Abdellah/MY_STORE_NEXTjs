@@ -1,12 +1,19 @@
-
+'use client'
 import Image from "next/image"
 import logo from '@/public/bglogo.png'
+import Link from "next/link"
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 function Header() {
+  const state = useSelector(({nbr_product:{count}})=> count);
+  useEffect(()=>{
+    console.log(state);
+  },[state]);
   return (
 <header className="bg-white dark:bg-dark_primary shadow-md dark:shadow-white">
   <div className="mx-auto flex h-16 max-w-screen-xl overflow-hidden items-center gap-8 px-4 sm:px-6 lg:px-8">
     
-       <a href="" className="relative mr-4">
+       <a href="/" className="relative mr-4">
         <h1 className=" font-bold text-3xl z-[1] relative text-color_primary ">Abdellah</h1>
        <Image src={logo}  width={280}  alt="logo"  className="absolute top-[-2.4rem] scale-[1.6]"/>
        </a>
@@ -18,33 +25,22 @@ function Header() {
 
             
           <li>
-            <a
+            <Link
               className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-              href="#"
+              href="/products"
             >
               Products
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a
+            <Link
               className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-              href="#"
+              href="/cart"
             >
-              Cart
-            </a>
+              Cart <strong className="text-yellow">( {state} )</strong>
+            </Link>
           </li>
-
-
-          <li>
-            <a
-              className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-              href="#"
-            >
-              About
-            </a>
-          </li>
-
         </ul>
       </nav>
 
@@ -52,7 +48,7 @@ function Header() {
         <div className="sm:flex sm:gap-4">
           <a
             className="block rounded-md bg-bg_yellow px-5 py-2.5 text-sm  text-color_primary font-bold transition  "
-            href="#"
+            href="/login" 
           >
             Login
           </a>
